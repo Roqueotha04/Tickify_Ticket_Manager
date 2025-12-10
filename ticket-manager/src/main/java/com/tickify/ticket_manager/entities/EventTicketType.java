@@ -3,10 +3,20 @@ package com.tickify.ticket_manager.entities;
 import com.tickify.ticket_manager.entities.Enums.TicketType;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class EventTicketType {
+
+
+    public EventTicketType(TicketType ticketType, float price, int stock, EventSchedule eventSchedule){
+        this.ticketType=ticketType;
+        this.price=price;
+        this.stock=stock;
+        this.eventSchedule=eventSchedule;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
