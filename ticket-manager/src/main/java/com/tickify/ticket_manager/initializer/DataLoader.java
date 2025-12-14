@@ -58,14 +58,14 @@ public class DataLoader implements ApplicationRunner {
             if (venues.isEmpty()) return; // por si acaso
 
             List<Event> events = List.of(
-                    new Event("Rock Fest 2025", venues.get(0)),
-                    new Event("Jazz Night", venues.get(1)),
-                    new Event("Stand-Up Internacional", venues.get(2)),
-                    new Event("Noche Electrónica", venues.get(3)),
-                    new Event("Festival Indie", venues.get(4)),
-                    new Event("Ciclo de Piano", venues.get(5)),
-                    new Event("Gala Sinfónica", venues.get(6)),
-                    new Event("Metal World Tour", venues.get(7))
+                    new Event("Rock Fest 2025", "Annual open-air rock music festival.", venues.get(0)),
+                    new Event("Jazz Night", "Live jazz performances with local artists.", venues.get(1)),
+                    new Event("International Stand-Up", "Comedy show featuring international performers.", venues.get(2)),
+                    new Event("Electronic Night", "Electronic music night with DJ sets.", venues.get(3)),
+                    new Event("Indie Music Festival", "Independent bands and emerging artists.", venues.get(4)),
+                    new Event("Piano Recital Series", "Classical piano performances.", venues.get(5)),
+                    new Event("Symphonic Gala", "Orchestral concert with symphonic repertoire.", venues.get(6)),
+                    new Event("Metal World Tour", "Live metal concert from international bands.", venues.get(7))
             );
 
             eventRepository.saveAll(events);

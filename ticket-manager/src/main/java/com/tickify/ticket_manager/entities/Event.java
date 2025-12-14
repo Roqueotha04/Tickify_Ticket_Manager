@@ -13,8 +13,10 @@ import java.util.List;
 public class Event {
 
 
-    public Event (String name, Venue venue){
+    public Event (String name, String description, Venue venue){
         this.name=name;
+        this.active=false;
+        this.description= description;
         this.venue=venue;
     }
 
@@ -23,6 +25,10 @@ public class Event {
     private Long id;
 
     private String name;
+
+    private String description;
+
+    private Boolean active;
 
     @ManyToOne()
     @JoinColumn(name = "venue_id")
