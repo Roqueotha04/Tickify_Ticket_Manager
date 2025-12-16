@@ -2,6 +2,7 @@ package com.tickify.ticket_manager.services;
 
 import com.tickify.ticket_manager.entities.DTO.EventUpdateDTO;
 import com.tickify.ticket_manager.entities.Event;
+import com.tickify.ticket_manager.entities.EventSchedule;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,6 +15,7 @@ public interface EventService {
     public void deactivateEvent(Long id);
     public void activateEvent(Long id);
     public void deleteEvent (Long id);
-    List<Event> getEventsByVenue(Long VenueID);
+    List<Event> getEventsByVenueName(String name);
+    public Event addEventSchedule (Long eventID, LocalDateTime dateTime);
     List<Event> getEventsByDate(LocalDateTime dateTime);
 }

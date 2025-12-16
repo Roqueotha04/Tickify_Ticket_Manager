@@ -4,8 +4,10 @@ import com.tickify.ticket_manager.Exceptions.BusinessException;
 import com.tickify.ticket_manager.Exceptions.ResourceNotFoundException;
 import com.tickify.ticket_manager.entities.DTO.EventUpdateDTO;
 import com.tickify.ticket_manager.entities.Event;
+import com.tickify.ticket_manager.entities.EventSchedule;
 import com.tickify.ticket_manager.entities.Venue;
 import com.tickify.ticket_manager.repositories.EventRepository;
+import com.tickify.ticket_manager.repositories.EventScheduleRepository;
 import com.tickify.ticket_manager.repositories.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,9 @@ public class EventServiceImpl implements EventService{
 
     @Autowired
     VenueService venueService;
+
+    @Autowired
+    EventScheduleRepository eventScheduleRepository;
 
     @Autowired
     TicketRepository ticketRepository;
@@ -92,9 +97,20 @@ public class EventServiceImpl implements EventService{
         eventRepository.delete(event);
     }
 
+
+
     @Override
-    public List<Event> getEventsByVenue(Long venueId) {
-        return eventRepository.findByVenueId(venueId);
+    public List<Event> getEventsByVenueName(String name) {
+        Venue venue= venueService.getVenueByName(name);
+        return eventRepository.findByVenueId(venue.getId());
+    }
+
+    @Override
+    public Event addEventSchedule(Long eventID, LocalDateTime dateTime) {
+        Event event = getEventByID(eventID);
+        EventSchedule eventSchedule = new EventSchedule(dateTime, event);
+        event.getEventSchedules().add(eventSchedule);
+        eventRepository.save(event);
     }
 
     @Override
