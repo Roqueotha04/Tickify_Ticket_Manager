@@ -24,6 +24,7 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name", unique = true, nullable = false)
     private String name;
 
     private String description;

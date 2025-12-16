@@ -17,6 +17,7 @@ public class EventSchedule {
     public EventSchedule(LocalDateTime dateTime, Event event){
         this.dateTime=dateTime;
         this.event=event;
+        this.active=false;
     }
 
     @Id
@@ -24,6 +25,8 @@ public class EventSchedule {
     private Long id;
 
     private LocalDateTime dateTime;
+
+    private boolean active;
 
     @ManyToOne()
     @JoinColumn(name = "event_id")

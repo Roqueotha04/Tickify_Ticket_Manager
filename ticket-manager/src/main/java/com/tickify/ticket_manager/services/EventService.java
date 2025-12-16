@@ -16,6 +16,5 @@ public interface EventService {
     public void activateEvent(Long id);
     public void deleteEvent (Long id);
     List<Event> getEventsByVenueName(String name);
-    public Event addEventSchedule (Long eventID, LocalDateTime dateTime);
     List<Event> getEventsByDate(LocalDateTime dateTime);
 }

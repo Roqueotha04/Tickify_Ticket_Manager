@@ -106,14 +106,6 @@ public class EventServiceImpl implements EventService{
     }
 
     @Override
-    public Event addEventSchedule(Long eventID, LocalDateTime dateTime) {
-        Event event = getEventByID(eventID);
-        EventSchedule eventSchedule = new EventSchedule(dateTime, event);
-        event.getEventSchedules().add(eventSchedule);
-        eventRepository.save(event);
-    }
-
-    @Override
     public List<Event> getEventsByDate(LocalDateTime dateTime) {
         return eventRepository.findByEventScheduleDate(dateTime);
     }

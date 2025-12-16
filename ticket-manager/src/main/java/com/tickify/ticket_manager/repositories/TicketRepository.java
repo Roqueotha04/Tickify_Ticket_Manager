@@ -18,4 +18,14 @@ public interface TicketRepository extends JpaRepository<Ticket, Long>{
     and es.dateTime > CURRENT_TIMESTAMP
     """)
     boolean hasTicketsForFutureSchedules (@Param("eventId") Long eventID);
+
+    @Query("""
+    select count(t) > 0
+    from Ticket t
+    join t.eventTicketType ett
+    join ett.eventSchedule es
+    where es.id = :eventScheduleId
+    and es.dateTime > CURRENT_TIMESTAMP
+    """)
+    boolean hasFutureTicketsForOneSchedule(@Param("eventScheduleId") Long eventScheduleId);
 }
